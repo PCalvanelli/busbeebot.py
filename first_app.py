@@ -27,6 +27,7 @@ if uploaded_file is not None:
     with st.spinner(text='Please hold. Shitball Higgins is attempting to read your data...'):
         time.sleep(1)
     st.write(df)
+    st.write(df.shape)
     st.success('Shitball Higgins :hankey: successfully loaded your file!')
 
 #Select specific variables for data analysis
@@ -48,10 +49,10 @@ if uploaded_file is not None:
     #Plot and Visualize
     st.header("Sample Visualization :bar_chart:")
     st.write("Now that you have selected that variables you'd like to explore, let's look at one way this can be visualized.")
-
-    y = st.sidebar.selectbox("Select Y Axis", df.columns[0:])
-    x = st.sidebar.selectbox("Select X Axis", df.columns[0:])
-    st.bar_chart([y])
-    st.bar_chart([x])
+if st.sidebar.checkbox("Select Columns to Show"):
+    all_columns = df.columns.tolist()
+    selected_columns = st.selectbox("Select",all_columns,index=(2))
+    new_df = df[selected_columns]
+    st.bar_chart(new_df.value_counts())
 else:
-    st.write("Waiting on csv...")
+    st.write("Waiting...")
