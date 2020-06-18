@@ -47,5 +47,11 @@ if st.button("Describe Data"):
 #Plot and Visualize
 st.header("Sample Visualization :bar_chart:")
 st.write("Now that you have selected that variables you'd like to explore, let's look at one way this can be visualized.")
-if st.button("Show Plot"):
-    st.area_chart(df)
+
+
+#Create X and Y axis
+y = st.sidebar.selectbox("Select Y Axis", df.columns[0:])
+x = st.sidebar.selectbox("Select X Axis", df.columns[0:])
+
+st.bar_chart([y])
+st.bar_chart([x])
