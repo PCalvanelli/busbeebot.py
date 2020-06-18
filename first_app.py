@@ -13,7 +13,7 @@ st.title('Busbee Bot :palm_tree: :v:')
 
 #Shitball Avatar
 
-image = Image.open('john.jpg')
+image = Image.open('img/john.jpg')
 st.image(image, caption="Hello! I am your new data analyst, Shitball Higgins!", width=200)
 
 #Upload CSV File
