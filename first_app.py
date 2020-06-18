@@ -3,6 +3,7 @@ import streamlit as st
 # working with sample data.
 import numpy as np
 import pandas as pd
+import altair as alt
 import time
 import matplotlib.pyplot as plt
 from PIL import Image
@@ -27,29 +28,14 @@ if uploaded_file is not None:
         time.sleep(1)
     st.write(df)
     st.success('Shitball Higgins :hankey: successfully loaded your file!')
-'''
-
----
-
-'''
 
 #Select specific variables for data analysis
 #Pulls columns data as variables
 
-st.header("Filter Variables")
-#Select Columns to display
-
-if df is not None:
-    all_columns = df.columns.tolist()
-    selected_columns = st.multiselect("Select",all_columns)
-    new_df = df[selected_columns]
-    st.dataframe(new_df)
-
-#Show summary
 if st.button("Describe Data"):
     with st.spinner(text='Please hold. Shitball Higgins :hankey: is looking intensly at your data...'):
         time.sleep(3)
-    st.write(new_df.describe().T)
+    st.write(df.describe().T)
     st.success("Shitball Higgins found some gems :gem:!")
 
 '''
@@ -62,4 +48,4 @@ if st.button("Describe Data"):
 st.header("Sample Visualization :bar_chart:")
 st.write("Now that you have selected that variables you'd like to explore, let's look at one way this can be visualized.")
 if st.button("Show Plot"):
-    st.bar_chart(new_df)
+    st.area_chart(df)
