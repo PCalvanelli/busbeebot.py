@@ -13,9 +13,9 @@ st.write('v',1.0)
 st.title('Busbee Bot :palm_tree: :v:')
 
 #Shitball Avatar
-
 image = Image.open('img/john.jpg')
 st.image(image, caption="Hello! I am your new data analyst, Shitball Higgins!", width=200)
+
 
 #Upload CSV File
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -43,15 +43,15 @@ if st.button("Describe Data"):
 ---
 
 '''
-
-#Plot and Visualize
-st.header("Sample Visualization :bar_chart:")
-st.write("Now that you have selected that variables you'd like to explore, let's look at one way this can be visualized.")
-
-
 #Create X and Y axis
-y = st.sidebar.selectbox("Select Y Axis", df.columns[0:])
-x = st.sidebar.selectbox("Select X Axis", df.columns[0:])
+if uploaded_file is not None:
+    #Plot and Visualize
+    st.header("Sample Visualization :bar_chart:")
+    st.write("Now that you have selected that variables you'd like to explore, let's look at one way this can be visualized.")
 
-st.bar_chart([y])
-st.bar_chart([x])
+    y = st.sidebar.selectbox("Select Y Axis", df.columns[0:])
+    x = st.sidebar.selectbox("Select X Axis", df.columns[0:])
+    st.bar_chart([y])
+    st.bar_chart([x])
+else:
+    st.write("Waiting on csv...")
