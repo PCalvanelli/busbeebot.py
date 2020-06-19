@@ -55,4 +55,4 @@ if st.sidebar.checkbox("Select Columns to Show"):
     new_df = df[selected_columns]
     st.bar_chart(new_df.value_counts())
 else:
-    st.write("Waiting...")
+    st.write("")
